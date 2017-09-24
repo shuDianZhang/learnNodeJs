@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="ajax.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        /*
+           接口：
+                /user?act=reg&user=aaa&pass=123456
+                {"ok":true, "msg":"原因"}
+
+                /user?act=login&user=aaa&pass=123456
+                 {"ok":true, "msg":"原因"}
+        */
+        window.onload = function(){
+            var oTxtUser = document.getElementById('user');
+            var oTxtPass = document.getElementById('pass');
+            var oBtnReg = document.getElementById('reg_btn');
+            var oBtnLogin = document.getElementById('login_btn');
+
+            oBtnLogin.onclick = function(){
+              ajax({
+                  url:'/user',
+                  data:{act:'login',user:oTxtUser.value,pass:oTxtPass.value},
+                  type:'get',
+                  success:function(str){
+                      var json = eval('('+str+')');
+                      if(json.ok){
+                          alert('登录成功');
+                      }else{
+                          alert('登录失败：'+json.msg);
+                      }
+                  },
+                  error:function(){
+                      alert('通信错误');
+                  }
+              });
+            }
+            oBtnReg.onclick=function(){
+                ajax({
+                    url:'/user',
+                    data:{act:'reg',user:oTxtUser.value,pass:oTxtPass.value},
+                    type:'get',
+                    success:function(str){
+                         var json = eval('('+str+')');
+                        if(json.ok){
+                            alert('注册成功');
+                        }else{
+                            alert('注册失败：'+json.msg);
+                        }
+                    },
+                    error:function(){
+                        alert('通信错误');
+                    }
+                });
+            };
+        };
+
+    </script>
+</head>
+<body>
+用户：<input type="text" id="user" name="user"><br>
+密码：<input type="password" id="pass" name="pass"><br>
+<input type="button" value="注册" id="reg_btn">
+<input type="button" value="登录" id="login_btn">
+</body>
+</html>

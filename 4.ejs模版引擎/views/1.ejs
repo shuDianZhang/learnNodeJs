@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+我的名字叫：<%= name%><br>
+<%= json.arr[0].user%><br>
+<%for(var i=0 ; i<json.arr.length;i++){%>
+<div><%=json.arr[i].user%></div>
+<%}%>
+<% var str="<div></div>"%>
+<%=str%>
+<%- str%>
+<br>
+<% include a.txt %>
+<% if(type=='user'){%>
+<% include user.css%>
+<%}else{%>
+<% include admin.css%>
+<%}%>
+</body>
+</html>

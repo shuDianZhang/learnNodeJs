@@ -1,0 +1,69 @@
+html
+    head
+        style
+        script(src="a.js")
+            |window.onload = function(){
+            |   var oBtn = document.getElementBy('txt1');
+            |}
+        script.
+            window.onload = function(){
+               var oBtn = document.getElementBy('txt1');
+                alert('oBtn.value');
+               };
+        script
+            include a.js
+        link(href="a.css",rel="stylesheet")
+    body
+        div
+            ul
+                li
+                  input(type="button",id="txt1",value="abc")
+                li
+                  input(type="button",id="txt2",value="abc")
+                li
+                  input(type="button",id="txt3",value="abc")
+        div(style="width:200px;height:200px;bacground:red")
+            a(href="http://www.baidu.com") 百度官网
+        div(class=['st1','st2','st3'],style={width:'200px',height:'200px',bacground:'red'})
+        div.box
+        div#box2
+        div&attributes({title:'aaa',id:'div5'})
+        div
+          |abc
+        div 我的名字：#{name},年龄：#{a+b}
+        div(style=json)
+        div(class=arr)
+        div(class=arr class="active")
+          span #{a}
+          span=b
+           -var c=20;
+           -var d=30;
+          span=d
+        div
+           -for(var i=0;i<arr2.length;i++)
+               div=arr2[i]
+        div!=content
+
+        div
+          -if(c%2==0)
+           div(style={background:'red'})偶数
+          -else
+           div(style="background:yellow;")奇数
+
+        div
+            -var e=3;
+              case e
+                  when 0
+                    div aaa
+                  when 1
+                    div bbb
+                  when 3
+                    div ccc
+                  default
+                    |不靠谱
+
+
+
+
+
+
